@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Z-index</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		.box-shape{
+			width: 70px;
+			height: 70px;
+			position: absolute;
+			text-align: center;
+		}
+
+		.main{
+			width: 70px;
+			height: 123px;
+			background-color: red;
+			position: absolute;
+			top: 53px;
+			left: 500px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.complement{
+			background-color: yellow;
+			left: 500px;
+			opacity: 0.65;
+		}
+
+		.zindx1{
+			z-index: 1;
+			top: 120px;
+		}
+
+		.zindx2{
+			z-index: 2;
+			top: 136px;
+		}
+
+		.zindx3{
+			z-index: 3;
+			top: 152px;
+		}
+
+		.zindx-1{
+			z-index: -1;
+			top: 33px;
+		}
+
+		.zindx-2{
+			z-index: -2;
+			top: 18px;
+		}
+
+		.zindx-3{
+			z-index: -3;
+			top: 3px;
+		}
+
+		.bottom{
+			position: absolute;
+			width: 70px;
+			height: 10px;
+			bottom: 7px;
+		}
+
+		.adjusment-zindx{
+			display: inline-block;
+			margin-top: 250px;
+			border: 2px solid black;
+			padding: 10px;
+		}
+
+		.layer-pos{
+			position: absolute;
+			right: 500px;
+			top: 20px;
+		}
+
+		.layer-display{
+			width: 100px;
+			position: relative;
+		}
+
+		.layer{
+			width: 50%;
+			height: 5px;
+			background-color: yellow;
+			margin: auto;
+			border: 0.5px solid black;
+			position: absolute;
+			left: 0;
+		}
+
+		.layer2{
+			width: 50%;
+			height: 5px;
+			margin: auto;
+			border: 0.5px solid black;
+			position: absolute;
+			right: 0;
+		}
+
+		#container{}
+	</style>
+
+	<script type="text/javascript">
+		window.onload=()=>{
+			let radios=document.getElementsByName("zindx");
+			var mainDiv=document.getElementById("main");
+			var zindxNum;
+			for (var i = 0; i <= radios.length; i++) {
+				if(radios[i].checked){
+					mainDiv.style.zIndex=radios[i].value;
+					adjustLayer(radios[i].value);
+					break;
+				}
+			}
+		}
+
+
+		function applyZindx(){
+			let radios=document.getElementsByName("zindx");
+			var mainDiv=document.getElementById("main");
+			var zindxNum;
+			for (var i = 0; i <= radios.length; i++) {
+				if(radios[i].checked){
+					mainDiv.style.zIndex=radios[i].value;
+					adjustLayer(radios[i].value);
+					break;
+				}
+			}
+
+		}
+
+		function adjustLayer(p){
+			var layer=document.getElementById(`${p}`);
+			layer.style="background-color: red;";
+
+			for (var i = -4; i <= 4; i++) {
+				if (i==p)
+					continue;
+				else{
+					document.getElementById(`${i}`).style="display: none;";
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+
+
+	<div id="container">
+		<div class="zindx-1 box-shape complement"><div class="bottom">z-index:-1</div></div>
+		
+		<div class="zindx-2 box-shape complement"><div class="bottom">z-index:-2</div></div>
+		<div class="zindx-3 box-shape complement"><div class="bottom">z-index:-3</div></div>
+
+
+		<div id="main" class="main">Main</div>
+		
+
+		<div class="zindx1 box-shape complement">z-index:1</div>
+		<div class="zindx2 box-shape complement">z-index:2</div>
+		<div class="zindx3 box-shape complement">z-index:3</div>
+
+
+
+		<!-- _______________Adjusting layer concept______________ -->
+
+		<table class="layer-pos" cellspacing="0" border="1">
+			<tr>
+				<td class="layer-display"><div id="4" class="layer2"></div></td>
+				<td>4</td>
+			</tr>
+
+			<tr>
+				<td class="layer-display"><div id="3" class="layer2"></div><div id="3" class="layer"></div></td>
+				<td>3</td>
+			</tr>
+
+			<tr>
+				<td class="layer-display"><div id="2" class="layer2"></div><div id="2" class="layer"></div></td>
+				<td>2</td>
+			</tr>
+
+
+			<tr>
+				<td class="layer-display"><div id="1" class="layer2"></div><div id="1" class="layer"></div></td>
+				<td>1</td>
+			</tr>
+
+
+
+			<tr>
+				<td class="layer-display"><div id="0" class="layer2"></div></td>
+				<td>0</td>
+			</tr>
+
+
+
+
+			<tr>
+				<td class="layer-display"><div id="-1" class="layer2"></div><div class="layer"></div></td>
+				<td>-1</td>
+			</tr>
+
+			<tr>
+				<td class="layer-display"><div id="-2" class="layer2"></div><div id="-2" class="layer"></div></td>
+				<td>-2</td>
+			</tr>
+
+			<tr>
+				<td class="layer-display"><div id="-3" class="layer2"></div><div id="-3" class="layer"></div></td>
+				<td>-3</td>
+			</tr>
+
+			<tr>
+				<td class="layer-display"><div id="-4" class="layer2"></div></td>
+				<td>-4</td>
+			</tr>
+
+		</table>
+	</div>
+
+
+
+	<!-- ______________Adjusting z-index property___________________ -->
+
+	<center>
+		<div class="adjusment-zindx">
+			<label><b>"Main" div's z-index: </b></label>
+			<input type="radio" name="zindx" value="-4">-4
+			<input type="radio" name="zindx" value="-3">-3
+			<input type="radio" name="zindx" value="-2">-2
+			<input type="radio" name="zindx" value="-1">-1
+			<input type="radio" name="zindx" value="0" checked="true">0
+			<input type="radio" name="zindx" value="1">1
+			<input type="radio" name="zindx" value="2">2
+			<input type="radio" name="zindx" value="3">3
+			<input type="radio" name="zindx" value="4">4
+
+			<button onclick="applyZindx()">Apply</button>
+		</div>
+	</center>
+
+
+	<img src="the-number-line.png" style="margin: 20px auto;display: block;">
+
+</body>
+</html>

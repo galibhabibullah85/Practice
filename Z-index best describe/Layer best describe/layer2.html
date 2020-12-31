@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Layer || extra-info</title>
+	<meta charset="utf-8">
+</head>
+<style type="text/css">
+	.container{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 400px;
+	}
+
+	.red,.yellow,.blue{
+		width: 100px;
+		height: 200px;
+		margin-right: 20px;
+		opacity: 0.7;
+		display: flex;
+		align-items: center;
+		color: white;
+	}
+
+	.red{
+		background-color: red;
+		z-index: 1;
+	}
+
+	.yellow{
+		background-color: yellow;
+		z-index: 0;
+	}
+
+	.blue{
+		background-color: blue;
+		z-index: -1;
+	}
+
+	.yl{
+		margin-left: 40px;
+	}
+
+	.bl{
+		margin-left: 80px;
+	}
+</style>
+<script type="text/javascript">
+	function mixLayer(p){
+		if(p){
+			document.querySelector(".red").style.position="absolute";
+			document.querySelector(".yellow").style.position="absolute";
+			document.querySelector(".btn").setAttribute("onclick","mixLayer(0)");
+		}
+		else{
+			document.querySelector(".red").style.position="relative";
+			document.querySelector(".yellow").style.position="relative";
+			document.querySelector(".btn").setAttribute("onclick","mixLayer(1)");
+		}
+	}
+</script>
+<body>
+
+	<div class="container">
+		<div class="red">
+			<p class="rd"><h1>R</h1></p>
+		</div>
+
+		<div class="yellow">
+			<p class="yl"><h1>Y</h1></p>
+		</div>
+
+		<div class="blue">
+			<p class="bl"><h1>B</h1></p>
+		</div>
+	</div>
+
+	<center>
+		<button class="btn" onclick="mixLayer(1)">Mix layer</button>
+	</center>
+
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+
+html,body{
+	width: 100%;
+	height: 100%;
+}
+
+#mainFrame{
+	width: 100%;
+	height: 100%;
+}
+
+#countDown{
+	background-color: #f6f6f6;
+	width: 100%;
+	height: 100%;
+}
+
+.reinder{
+	position: absolute;
+	right: 137px;
+	top: 277px;
+	font-size: 40px;
+}
+
+.clock_position{
+	position: absolute;
+	top: 94px;
+	left: 201px;
+}
+
+#clockDiv{
+	position: relative;
+}
+
+#sHand,#mHand,#hHand{
+	position: absolute;
+}
+
+#clock{
+	width: 304px;
+	height: 446px;
+	transition: .5s;
+}
+
+
+#sHand{
+	height: 130px;
+	left: 150.6px;
+	top: 181.6px;
+	transform-origin: 53% 73%;
+}
+
+#mHand{
+	width: 10px;
+	height: 103px;
+	left: 148px;
+	top: 188px;
+	transform-origin: 57% 85%;
+}
+
+#hHand{
+	width: 10px;
+	height: 72px;
+	left: 148.5px;
+	top: 213px;
+	transform-origin: 50% 89%;
+}
+
+#clcockShadow{
+	position: absolute;
+	left: -2.5px;
+	top: 418px;
+}
+
+@keyframes shake{
+	0%{
+		transform: rotate(10deg);
+	}
+	100%{
+		transform: rotate(-10deg);
+	}
+}
+
+#hpyNwYer{
+	display: none;
+}
+
+#gif{
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	margin: -138px auto;
+	transition: 1s;
+}

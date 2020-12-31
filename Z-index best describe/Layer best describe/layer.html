@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Layer || indetail</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		body{
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			min-height: 550px;
+		}
+
+		img{
+			position: absolute;
+		}
+
+		#botmBun{
+			top: 290px;
+			width: 0;
+			transition: 0.7s;
+		}
+
+		#lettuce{
+			top: 247px;
+			width: 0;
+			transition: 0.7s;
+		}
+
+		#beaf{
+			top: 255px;
+			width: 0;
+			transition: 0.7s;
+		}
+
+		#cheese{
+			top: 175px;
+			left: 468px;
+			width: 0;
+			transition: 0.7s;
+		}
+
+		#tomato{
+			top: 243px;
+			left: 442px;
+			width: 0;
+			transition: 0.7s;
+		}
+
+		#topBun{
+			top: -5px;
+			left: 298px;
+			width: 0;
+			transition: 0.7s;
+		}
+	</style>
+</head>
+<body onclick="display(1)">
+
+	<img id="botmBun" src="burger-bottom-bun.png">
+	<img id="lettuce" src="lettuce leaf.png">
+	<img id="beaf" src="meat beaf.png">
+	<img id="cheese" src="cheese.png">
+	<img id="tomato" src="tomato slice.png">
+	<img id="topBun" src="burger-top-bun.png">
+
+	<script type="text/javascript">
+		function display(p){
+			var body=document.querySelector("body");
+			if(p==1){
+				document.getElementById("botmBun").style.width="500px";
+				body.setAttribute("onclick","display(2)");
+			}
+			if (p==2) {
+				document.getElementById("lettuce").style.width="430px";
+				body.setAttribute("onclick","display(3)");
+			}
+			if (p==3) {
+				document.getElementById("beaf").style.width="528px";
+				body.setAttribute("onclick","display(4)");
+			}
+			if (p==4) {
+				document.getElementById("cheese").style.width="425px";
+				body.setAttribute("onclick","display(5)");
+			}
+			if (p==5) {
+				document.getElementById("tomato").style.width="440px";
+				body.setAttribute("onclick","display(6)");
+			}
+			if (p==6) {
+				document.getElementById("topBun").style.width="761px";
+				body.setAttribute("onclick","display(-1)");
+			}
+			if(p==(-1)){
+				document.getElementById("topBun").style.width="0";
+				body.setAttribute("onclick","display(-2)");
+			}
+			if (p==(-2)) {
+				document.getElementById("tomato").style.width="0";
+				body.setAttribute("onclick","display(-3)");
+			}
+			if (p==(-3)) {
+				document.getElementById("cheese").style.width="0";
+				body.setAttribute("onclick","display(-4)");
+			}
+			if (p==(-4)) {
+				document.getElementById("beaf").style.width="0";
+				body.setAttribute("onclick","display(-5)");
+			}
+			if (p==(-5)) {
+				document.getElementById("lettuce").style.width="0";
+				body.setAttribute("onclick","display(-6)");
+			}
+			if (p==(-6)) {
+				document.getElementById("botmBun").style.width="0";
+				body.setAttribute("onclick","display(1)");
+			}
+		}
+	</script>
+
+</body>
+</html>

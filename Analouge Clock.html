@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Analouge Clock</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.clock{
+			width:500px;
+			height:500px;
+			border-radius: 50%;
+			margin-top: 10px;
+			margin-left: auto;
+			margin-right: auto;
+			border:3px solid lightblue;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: relative;
+			background-image: url("clock.png");
+			background-size: 100%;
+		}
+
+		.hour{
+			height: 157px;
+			width: 7px;
+			border: 2px solid black;
+			background-color: black;
+			position: absolute;
+			opacity: 0.8;
+			transform-origin: bottom;
+			left: 244.5px;
+			top: 90px;
+		}
+		.minute{
+			height: 200px;
+			width: 7px;
+			border: 2px solid blue;
+			background-color: blue;
+			position: absolute;
+			opacity: 0.8;
+			transform-origin: bottom;
+			left: 244.5px;
+			top: 48px;
+		}
+		.second{
+			height: 231px;
+			width: 1px;
+			border: 1px solid green;
+			background-color: green;
+			position: absolute;
+			opacity: 0.8;
+			transform-origin: bottom;
+			left: 248.5px;
+			top: 19px;
+		}
+		#digit{
+			width:160px;
+			height: 50px;
+			border:2px solid black;
+			position: absolute;
+			top:135px;
+			text-align: center;
+		}
+		#date{
+			width:280px;
+			height: 80px;
+			border:2px solid black;
+			position: relative;
+			top:84px;
+			text-align: center;
+		}
+		#center{
+			width: 40px;
+			height: 40px;
+			position: absolute;
+			background-color: black;
+			border-radius: 50%;
+		}
+	</style>
+</head>
+<body>
+
+	<div class="clock">
+		<div class="hour"></div>
+		<div class="minute"></div>
+		<div class="second"></div>
+		<div id="center"></div>
+		<div id="digit"></div>
+		<div id="date"></div>
+	</div>
+
+	<script type="text/javascript">
+		let hour = document.querySelector(".hour");
+		let minute = document.querySelector(".minute");
+		let second = document.querySelector(".second");
+
+		let digit = document.getElementById("digit");
+		let date = document.getElementById("date");
+
+		let dateObj;
+		let hourTime;
+		let minTime;
+		let secTime;
+		var count = 0;
+		var deg=0;
+		const optionsForLocalDateString={weekday:"long",year:"numeric",month:"long",day:"numeric"};
+
+		setInterval(()=>{
+			//This is an "Aroow function"
+
+			dateObj  = new Date();
+			hourTime = dateObj.getHours();
+			minTime = dateObj.getMinutes();
+			secTime = dateObj.getSeconds();
+
+			if(hourTime>12){
+				hourTime-=12;
+			}
+			else if(hourTime==0){
+				hourTime=12;
+			}
+
+			digit.innerHTML=`<h1>${hourTime} : ${minTime} : ${secTime}</h1>`;
+
+			second.style.transform=`rotate(${secCount()}deg)`;
+
+			function secCount(){
+				deg=(secTime*6);
+				if(deg==360){
+					deg=0;
+				}
+
+				return deg;
+			}
+
+
+			minute.style.transform=`rotate(${minCount()}deg)`;
+
+			var countForMin=6;
+			function minCount(){
+				deg=(minTime*6);
+				if(deg==360){
+					deg=0;
+				}
+
+				return deg;
+			}
+
+			hour.style.transform=`rotate(${hourCount()}deg)`;
+
+			function hourCount(){
+				
+				deg=(hourTime*30);
+				if(deg==360){
+					deg=0;
+				}
+
+				return deg;
+			}
+
+			date.innerHTML=`<h1>${dateObj.toLocaleDateString(undefined,optionsForLocalDateString)}</h1>`;
+		},1000);
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+<!-- <head>
+	<title>I am following you!</title>
+	<style type="text/css">
+		#container{
+			width: 100%;
+			height: 500px;
+			border: 3px solid #008800;
+			overflow: hidden;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: none;
+		}
+
+		#cursor{
+			width: 50px;
+			height: 50px;
+			border:2px dotted black;
+			border-radius: 50%;
+			transition: 0.1s;
+			transform: translate(-50%,-50%);
+			pointer-events: none;
+			box-sizing: border-box;
+			position: absolute;
+
+		}
+
+	</style>
+</head>
+<body>
+
+	<div id="container">
+
+		<div id="cursor"></div>
+
+	</div>
+
+
+	<script type="text/javascript">
+		var cursor = document.getElementById('cursor');
+
+
+		document.addEventListener("mousemove",function(e){
+
+			var x = e.clientX;
+			var y = e.clientY;
+
+			cursor.style.left = x + "px";
+			cursor.style.top = y + "px";
+		});
+
+		
+
+
+	</script>
+
+</body>
+</html> -->
+
+<head>
+	<meta charset="utf-8">
+	<title>I am following you!</title>
+	<style type="text/css">
+		/*body{
+			margin: 0;
+			padding: 0;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			overflow: hidden;
+			min-height: 100vh;
+		}
+
+		#face{
+			width: 300px;
+			height: 300px;
+			border-radius: 50%;
+			position: relative;
+			background-color: #ffcd00;
+			display: flex;
+		}
+
+		#eyes{
+			display: flex;
+			position: relative;
+			margin-left: 40px;
+			margin-top: 30px;
+		}
+
+		.eye{
+			position: relative;
+			width: 70px;
+			height: 70px;
+			border-radius: 50%;
+			background-color: #FFFFFF;
+			margin: 20px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.eyeBall{
+			position: absolute;
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			background-color: black;
+			transition: 0.5s;
+		}
+
+		#mouth{
+			position: absolute;
+			background-color: #b57700;
+			width: 150px;
+			height: 70px;
+			display: flex;
+			margin-left: 75px;
+			margin-top: 200px;
+			border-bottom-left-radius: 70px;
+			border-bottom-right-radius: 70px;
+			transition: 0.3s;
+		}
+
+		#mouth:hover{
+			position: absolute;
+			background-color: #b57700;
+			width: 150px;
+			height: 30px;
+			display: flex;
+			margin-left: 75px;
+			margin-top: 200px;
+			border-bottom-left-radius:0;
+			border-bottom-right-radius:0;
+		}*/
+
+		#container{
+			width: 100%;
+			height: 500px;
+			border:3px solid #008800;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			overflow: hidden;
+		}
+
+		.face{
+			width: 300px;
+			height: 300px;
+			border-radius: 50%;
+			position: relative;
+			background-color: #ffcd00;
+			display: flex;
+		}
+
+		.face::before{
+			content: '';
+			position: absolute;
+			top: 180px;
+			width: 150px;
+			height: 70px;
+			background-color: #b57700;
+			border-bottom-left-radius: 70px;
+			border-bottom-right-radius: 70px;
+			transition: 0.5s;
+			margin-left: 70px;
+		}
+
+		.face:hover::before{
+			top: 210px;
+			width: 150px;
+			height: 20px;
+			background-color: #b57700;
+			border-bottom-left-radius: 0px;
+			border-bottom-right-radius: 0px;
+		}
+
+		.eyes{
+			position: relative;
+			top: 35px;
+			display: flex;
+			margin-left: 40px;
+		}
+
+		.eyes .eye{
+			position: relative;
+			width: 80px;
+			height: 80px;
+			display: block;
+			background-color: #fff;
+			margin: 0 15px;
+			border-radius: 50%;
+		}
+
+		.eyes .eye::before{
+			content: '';
+			position: absolute;
+			top: 50%;
+			left:25px;
+			width: 40px;
+			height: 40px;
+			background-color: #333;
+			border-radius: 50%;
+			transform: translate(-50%,-50%);
+		}
+
+		#caption{
+			text-align: center;
+			font-size: 31px;
+		}
+
+		#caption:hover{
+			color: #008800;
+		}
+	</style>
+</head>
+<body>
+
+	<!-- <div id="face">
+		<div id="eyes">
+			<div class="eye">
+				<div class="eyeBall"></div>
+			</div>
+			<div class="eye">
+				<div class="eyeBall"></div>
+			</div>
+		</div>
+
+		<div id="mouth"></div>
+	</div> -->
+
+	<div id="container">
+		<div class="face">
+			<div class="eyes">
+				<div class="eye"></div>
+				<div class="eye"></div>
+			</div>
+		</div>
+	</div>
+
+	<p id="caption">একবার ভাবুন তো, একটা সামান্য website যদি আপনার cursor কে track করতে পারে, তাহলে <b>আল্লাহ</b> কি আপনাকে track করতে পারবেন না?</p>
+
+
+<script type="text/javascript">
+
+	document.querySelector("#container").addEventListener('mousemove',move);
+
+	function move(){
+
+		var eye = document.querySelectorAll('.eye');
+
+		eye.forEach(function(eye){
+			let x = (eye.getBoundingClientRect().left) + (eye.clientWidth / 2);
+
+			let y = (eye.getBoundingClientRect().top) + (eye.clientHeight / 2);
+
+			let radian = Math.atan2(event.pageX - x, event.pageY - y);
+
+			let rotate = (radian * (180 / Math.PI) * -1) + 270;
+
+			eye.style.transform = `rotate(${rotate}deg)`;
+		});
+	}
+</script>
+
+</body>
+</html>

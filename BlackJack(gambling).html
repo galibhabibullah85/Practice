@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>JavaScript Project</title>
+	<style type="text/css">
+		table{
+			border:2px solid #333;
+			border-collapse: collapse;
+			margin-right: auto;
+			margin-left: auto;
+		}
+
+		.container{
+			display: flex;
+			border:2px solid black;
+			background-image: url("../Cards/background.jpg");
+
+		}
+
+		.control-panel{
+			display: inline;
+			border:1px solid black;
+			width: 50%;
+		}
+
+		.board{
+			margin:5px;
+			border:1px solid black;
+			height: 300px;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			overflow: auto;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.btn-grp{
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+
+		.btn{
+			background-color: blue;
+			height: 20px;
+			border-radius: 30px;
+		}
+
+		.btn:hover{
+			background-color: white;
+			border:1px solid blue;
+			color:blue;
+		}
+
+		.num{
+			width:80px;
+			height: 90px;
+			margin:10px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+
+		}
+
+		pre{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+
+	<div>
+		<h1 align="center"><i><u>BlackJack</u></i></h1>
+		<h3 id="result" align="center">You will surely lose!</h3>
+
+		<hr width="70%">
+
+		<p>The rule of this game is that you have to bid (have to click on the <b>"Hit the bit!"</b> button) till the nearest score of <b>"21"</b> and than click on the <b>"Enough bit!"</b> button.If your score is <b>"Bust!"</b>, it means that your bit have crossed <b>"21"</b>.Finally you can see the result on the screen.Click <b>"Reset"</b> button to reset everything(without your score!).</p>
+
+		<hr width="70%">
+
+		<pre>Have a nice day,sir!</pre>
+
+		<div class="container">
+			<div class="control-panel">
+				<h2><u>Your score: </u><span id="you">0</span></h2>
+
+				<div class="board"></div>	
+			</div>
+
+			<div class="control-panel">
+				<h2><u>Computer's score: </u><span id="computer">0</span></h2>
+
+				<div class="board"></div>
+			</div>
+		</div>
+
+		<div class="btn-grp" align="center">
+			<button onclick="startBid()" class="btn">Hit the bit!</button>
+			<button onclick="stopBid()" class="btn">Enough bit!</button>
+			<button onclick="reset()" class="btn">Reset</button>
+		</div>
+
+		<table border="2">
+			<tr>
+				<th>Win</th>
+				<th>Loss</th>
+				<th>Draw</th>
+			</tr>
+
+			<tr>
+				<td class="result">0</td>
+				<td class="result">0</td>
+				<td class="result">0</td>
+			</tr>
+		</table>
+	</div>
+
+<script type="text/javascript">
+	function startBid(){
+
+		if(document.querySelector("#result").innerText=="WoW!You won!" || document.querySelector("#result").innerText=="I told you before that you will lose!")
+			return 0;
+
+		var board = document.querySelectorAll(".board")[0];
+		var bid = document.createElement("img");
+		
+		bid.setAttribute("class","num");
+		var rand = Math.round(Math.random()*12+1);
+		bid.src=`../Cards/${rand}.jpg`;
+		board.appendChild(bid);
+		bid.value=rand;
+
+		var score = document.getElementById("you");
+		var scrCount = parseInt(score.innerText) + parseInt(bid.value);
+		if(scrCount>21){
+			score.innerText="Bust!";
+			score.style.color="red";
+			stopBid();
+		}else{
+			score.innerText=scrCount;
+		}
+	}
+
+	function stopBid(){
+
+		if(document.querySelector("#result").innerText=="WoW!You won!" || document.querySelector("#result").innerText=="I told you before that you will lose!" || document.getElementById("you").innerText=="0")
+			return 0;
+
+		var score = document.getElementById("computer");
+		var count = 0;
+
+		while(score.innerText!="Bust!"){
+			var board = document.querySelectorAll(".board")[1];
+			var bid = document.createElement("img");
+			
+			bid.setAttribute("class","num");
+			var rand = Math.round(Math.random()*12+1);
+			bid.src=`../Cards/${rand}.jpg`;
+			board.appendChild(bid);
+			bid.value=rand;
+
+			var scrCount = parseInt(score.innerText) + parseInt(bid.value);
+			if(scrCount>21){
+				score.innerText="Bust!";
+				score.style.color="red";
+			}else{
+				score.innerText=scrCount;
+				count++;
+			}
+		}
+
+		while(scrCount>21){
+			var v=document.querySelectorAll(".board")[1].querySelectorAll(".num")[count];
+			var cal = parseInt(v.value);
+			scrCount=scrCount-cal;
+			score.innerText=scrCount;
+			v.remove();
+			document.getElementById("computer").style.color="black";
+			count++;
+		}
+
+		result();
+	}
+
+	function reset(){
+		if(document.querySelector("#result").innerText=="You will surely lose!")
+			return 0;
+
+		let j = document.querySelectorAll(".num");
+
+		for(var i=0;i<j.length;i++){
+			document.querySelectorAll(".num")[0].remove();
+		}
+
+		document.getElementById("computer").innerText=0;
+		document.getElementById("computer").style.color="black";
+
+		document.getElementById("you").innerText=0;
+		document.getElementById("you").style.color="black";
+
+		document.querySelector("#result").innerText="You will surely lose!";
+		document.querySelector("#result").style.color="black";
+	}
+
+	var countWin=1;
+	var countLoss=1;
+	var countTie=1;
+
+	function result(){
+		let you = document.getElementById("you").innerText;
+		let computer = document.getElementById("computer").innerText;
+
+		if((parseInt(you)>parseInt(computer))&&(you!="Bust!")){
+			document.querySelector("#result").innerText="WoW!You won!";
+			document.querySelector("#result").style.color="green";
+
+			document.querySelectorAll(".result")[0].innerText=countWin;
+			document.querySelectorAll(".result")[0].style.color="green";
+			countWin++;
+		}
+		else if((parseInt(you)<parseInt(computer))||(you=="Bust!")){
+			document.querySelector("#result").innerText="I told you before that you will lose!";
+			document.querySelector("#result").style.color="red";
+
+			document.querySelectorAll(".result")[1].innerText=countLoss;
+			document.querySelectorAll(".result")[1].style.color="red";
+			countLoss++;
+		}
+		else if((parseInt(you)==parseInt(computer))){
+			document.querySelector("#result").innerText="It was a tie!";
+			document.querySelector("#result").style.color="blue";
+
+			document.querySelectorAll(".result")[2].innerText=countTie;
+			document.querySelectorAll(".result")[2].style.color="blue";
+			countTie++;
+		}
+	}
+</script>
+
+</body>
+</html>

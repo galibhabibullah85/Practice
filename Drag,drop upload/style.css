@@ -1,0 +1,34 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+html,body{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#drop_file_zone {
+    background-color: #EEE;
+    border: #999 5px dashed;
+    width: 99%;
+    height: 97%;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+#drag_upload_file {
+  width:100%;
+  margin:0 auto;
+}
+#drag_upload_file p {
+  text-align: center;
+}
+#drag_upload_file #selectfile {
+  display: none;
+}

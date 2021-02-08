@@ -1,0 +1,89 @@
+.greeting{
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	width: 300px;
+	height: 55px;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.greeting .preloader{
+	position: absolute;
+	left: 150px;
+	right: 0;
+	bottom: 0;
+	top: -81px;
+	margin: auto;
+}
+
+.greeting h1{
+	font-size: 50px;
+	position: absolute;
+	left: -35px;
+	right: 0;
+	bottom: 0;
+	top: -11px;
+	margin: auto;
+}
+
+.greeting img{
+	position: absolute;
+	width: 183px;
+}
+
+/*____________________Preloader animation__________________*/
+.greeting .preloader .preloader1{
+	animation: preloaderst infinite 1.8s;
+}
+
+.greeting .preloader .preloader2{
+	animation: preloadernd infinite 2s;
+}
+
+.greeting .preloader .preloader3{
+	animation: preloaderrd infinite 2.2s;
+}
+
+.greeting .preloader .preloader4{
+	animation: preloaderrt infinite 2.4s;
+}
+
+.greeting .preloader .preloader5{
+	animation: preloaderfth infinite 2.6s;
+}
+
+/*________________All preloader animation keyframes_______________*/
+@keyframes preloaderst{
+	from{
+		transform: rotate(-360deg);
+	}
+}
+
+@keyframes preloadernd{
+	from{
+		transform: rotate(-360deg);
+	}
+}
+
+@keyframes preloaderrd{
+	from{
+		transform: rotate(-360deg);
+	}
+}
+
+@keyframes preloaderrt{
+	from{
+		transform: rotate(-360deg);
+	}
+}
+
+@keyframes preloadersfth{
+	from{
+		transform: rotate(-360deg);
+	}
+}

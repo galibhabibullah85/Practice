@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Windows 10 Log-in page</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/input.css">
+	<link rel="stylesheet" type="text/css" href="css/greeting.css">
+
+	<script type="text/javascript" src="js/responsive.js"></script>
+</head>
+<body onresize="resizeWndw()">
+
+	<div id="blackish" onclick="login(0)">
+		<div id="tnd">
+			<h1 id="time"><span id="hour">00</span>:<span id="minute">00</span> <span id="format">00</span></h1>
+
+			<h4 id="date">Satarday,December 13</h4>
+		</div>
+
+		<div id="login" style="display: none;">
+			<div class="flexbox" tabindex="-1" id="flexbox" onfocus="this.classList.add('focused')" onblur="this.classList.remove('focused')">
+				<img class="avater" id="avater" src="img/avater.png">
+
+				<h1 id="usrName">MD.Habibullah Galib</h1>
+
+				<div class="pwd-inp-div" id="pwdDiv">
+					<input id="pwd" type="password" placeholder="Password">
+
+					<img class="visual" id="visual" src="img/closed-eye.png">
+				</div>
+
+				<h3 class="forget-pwd" id="frgtPwd" onclick="alert(`Your password is 786@089`);">I forgot my password!</h3>
+			</div>
+		</div>
+
+		<div class="greeting" id="greeting" style="display: none;">
+			<div class="preloader">
+				<img class="preloader1" src="img/preloader.png">
+				<img class="preloader2" src="img/preloader.png">
+				<img class="preloader3" src="img/preloader.png">
+				<img class="preloader4" src="img/preloader.png">
+				<img class="preloader5" src="img/preloader.png">
+			</div>
+			<h1>Welcome</h1>
+		</div>
+	</div>
+
+	<footer id="ftr">
+		<img src="img/brodband.png">
+		<img src="img/ease_of_access.png">
+		<img src="img/shut_down.png">
+	</footer>
+	
+	<script type="text/javascript" src="js/script.js"></script>
+	<script type="text/javascript" src="js/timeNdate.js"></script>
+	<script type="text/javascript" src="js/pwdverify.js"></script>
+</body>
+</html>

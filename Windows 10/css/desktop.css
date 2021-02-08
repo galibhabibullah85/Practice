@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+*{
+	margin: 0;
+	padding: 0;
+}
+
+html,body{
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	color: #c0c0c0;
+	font-size: 18px;
+	font-family: 'VT323', monospace;
+}
+
+.container{
+	height: 100%;
+	width: 100%;
+	background-image: url("http://galibhabib.byethost13.com/Extra%20project(Window10)/desktop.html");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#cmd{
+	width: 0;
+	height: 0;
+	transition: 0.4s;
+	background-image: url("../img/cmd.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	position: relative;
+}
+
+h4{
+	position: absolute;
+	left: 152px;
+	top: 66px;
+}

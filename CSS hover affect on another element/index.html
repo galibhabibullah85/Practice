@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Rakib vai's Assignment</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+		section,.container,.inner-section,.row{
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		html,body{
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			background-color: #ccbebb;
+		}
+
+		td,th{
+			padding: 4px;
+			text-align: center;
+		}
+
+		.tab-row:hover{
+			width: 80%;
+			background-color: #62637585;
+			transition: 0.7s;
+		}
+
+		.tab-row:hover td{
+			color: white;
+			transition: .7s;
+		}
+
+		nav{
+			position: absolute;
+			top: 0;
+			left: 0;
+			background-color: #6263756e;
+			width: 100%;
+			height: 50px;
+			font-size: 23px;
+		}
+
+		nav ul{
+			display: inline;
+			list-style-type: none;
+			height: 50px;
+		}
+
+		nav,ul{
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		nav ul li{
+			display: inline;
+			margin: 0 5px;
+			transition: 0.7s;
+			color: black;
+		}
+
+		nav ul li hr{
+			width: 50%;
+			display: inline;
+			margin: 0 3px;
+			opacity: 0;
+			transition: 0.7s;
+			color: white;
+			height: 2px;
+		}
+
+		nav ul li:hover{
+			color: white;
+			transition: 0.7s;
+		}
+
+		nav ul li:hover hr{
+			opacity: 1;
+			transition: 0.7s;
+		}
+	</style>
+</head>
+<body>
+
+	<nav>
+		<ul>
+			<li><hr>Home<hr></li>
+			<li><hr>About<hr></li>
+			<img src="index.jpg" style="width: 35px;border-radius: 50%;">
+			<li><hr>Services<hr></li>
+			<li><hr>Contact us<hr></li>
+		</ul>
+	</nav>
+
+	<section>
+		<div class="inner-section">
+			<div class="container">
+				<div class="row">
+					<table cellspacing="0" style="width: 60%;background-color: #6263756e;">
+						<tr class="tab-hed">
+							<th rowspan="2"><b>Index</b></th>
+							<th rowspan="2"><b>Name</b></th>
+							<th colspan="2"><b>Expertise</b></th>
+						</tr>
+
+						<tr class="tab-hed">
+							<td>Front-end</td>
+							<td>Back-end</td>
+						</tr>
+
+						<tr class="tab-row">
+							<td>01</td>
+							<td>Md.Habibullah Galib</td>
+							<td>HTML5,CSS3,Js</td>
+							<td>PHP</td>
+						</tr>
+
+						<tr class="tab-row">
+							<td>02</td>
+							<td>Md. Mushfiqur Rahman(Tutul)</td>
+							<td>HTML5,CSS3,Js,Jquery</td>
+							<td>PHP,React.js</td>
+						</tr>
+
+						<tr class="tab-row">
+							<td>03</td>
+							<td>Md. Fazle Rabbi Rahat</td>
+							<td colspan="2">WordPress</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>

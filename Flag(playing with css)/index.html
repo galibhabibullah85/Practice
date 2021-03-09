@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Playing with CSS</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+
+		body, html{
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			overflow: hidden;
+		}
+
+		.flag{
+			width: 400px;
+			height: 250px;
+			background-color: green;
+			position: relative;
+			outline: none;
+		}
+
+		.bd-argentine{
+			width: 100%;
+			height: 100%;
+		}
+
+		.bd-circle{
+			width: 144px;
+			height: 142px;
+			background-color: red;
+			border-radius: 50%;
+			position: absolute;
+			top: 23%;
+			left: 28%;
+		}
+
+		.top, .middle, .bottom{
+			width: 100%;
+			height: 33.33%;
+		}
+
+		.sun{
+			width: 129px;
+			height: 100%;
+		}
+
+		.berca-flag{
+			width: 100%;
+			height: 100%;
+			background-color: blue;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			opacity: 0;
+			position: relative;
+		}
+
+		.red{
+			width: 100%;
+			height: 37.11px;
+			background-color: red;
+		}
+
+		.berca-logo{
+			width: 204px;
+			position: absolute;
+			z-index: 1;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			margin: auto;
+		}
+
+		.flag:hover .bd-circle{
+			display: none;
+		}
+
+		.flag:hover .top, .flag:hover .bottom{
+			background-color: #75aadb;
+		}
+
+		.flag:hover .middle{
+			background-color: white;
+		}
+
+		.flag:focus .bd-argentine{
+			display: none;
+		}
+
+		.flag:focus .berca-flag{
+			opacity: 1;
+		}
+	</style>
+</head>
+<body>
+
+	<section>
+		<div class="inner-section">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<div class="flag" tabindex="3">
+							<div class="bd-argentine">
+								<div class="top"></div>
+							
+								<div class="middle">
+									<div class="bd-circle"></div>
+									<center style='height: 100%;'>
+										<img src="sun.png" class="sun">
+									</center>
+								</div>
+
+							<div class="bottom"></div>
+							</div>
+
+							<div class="berca-flag">
+								<div class="red"></div>
+								<div class="red"></div>
+
+								<img src="logo.png" class="berca-logo">
+
+								<div class="red"></div>
+								<div class="red"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>

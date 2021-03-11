@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cards with CSS</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		body, html{
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.col{
+			height: 296px;
+		}
+
+		.heading{
+			font-size: 30px;
+			font-weight: 600;
+			text-transform: uppercase;
+			margin-bottom: 20px;
+		}
+
+		.heading span:nth-child(1){
+			color: #1f519d;
+		}
+		.heading span:nth-child(2){
+			color: #6db432;
+		}
+		.heading span:nth-child(3){
+			color: #f55b4e;
+		}
+
+		.card-display{
+			width: 100%;
+			height: 100%;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.cards{
+			width: 262px;
+			height: 340px;
+			margin: 10px;
+			border-radius: 8px;
+			position: relative;
+			overflow: hidden;
+			background-image: url(programming.jpg);
+			background-size: 560px;
+			background-position: 27% 15%;
+			background-repeat: no-repeat;
+		}
+
+		.card-display .cards:nth-child(2){
+			background-image: url(graphic.jpg);
+			background-size: 280px;
+			background-position: center center;
+		}
+		.card-display .cards:nth-child(3){
+			background-image: url(dm.jpg);
+			background-size: 280px;
+			background-position: center center;
+		}
+
+		.overlay{
+			width: 100%;
+			height: 100%;
+			transition: 0.3s all ease-in-out;
+		}
+
+		.card-heading{
+			position: absolute;
+			padding-left: 20px;
+			bottom: 20px;
+			color: white;
+		}
+
+		.social,.social2,.social3{
+			position: absolute;
+			z-index: 1;
+			left: 0;
+			right: 0;
+			transform: translateY(-100%);
+			transition: 0.3s all ease-in-out;
+		}
+
+		.social a,.social2 a,.social3 a{
+			display: inline-block;
+		}
+
+		.social a i{
+			width: 40px;
+			height: 40px;
+			font-size: 30px;
+			line-height: 40px;
+			border-radius: 50%;
+			color: #0769fd;
+			transition: 0.3s all ease-in-out;
+		}
+		.social2 a i{
+			width: 40px;
+			height: 40px;
+			font-size: 30px;
+			line-height: 40px;
+			border-radius: 50%;
+			color: rgb(103, 206, 95);
+			transition: 0.3s all ease-in-out;
+		}
+		.social3 a i{
+			width: 40px;
+			height: 40px;
+			font-size: 30px;
+			line-height: 40px;
+			border-radius: 50%;
+			color: #f55b4e;
+			transition: 0.3s all ease-in-out;
+		}
+
+		.social a:hover i{
+			background: #0769fd;
+			color: white;
+		}
+		.social2 a:hover i{
+			background: rgb(103, 206, 95);
+			color: white;
+		}
+		.social3 a:hover i{
+			background: #f55b4e;
+			color: white;
+		}
+
+		.cards:hover .overlay{
+			background: #0000006e;
+			transition: 0.3s all ease-in-out;
+		}
+
+		.cards:hover .social,.cards:hover .social2,.cards:hover .social3{
+			transform: translateY(20%);
+			transition: 0.3s all ease-in-out;
+		}
+
+		.pop-up{
+			height: 250px;
+			position: absolute;
+			transform: translateY(150%);
+			transition: 0.7s;
+		}
+
+		.pop-content{
+			padding: 0;
+			height: 0;
+			height: 100%;
+			padding: 20px;
+			border-radius: 20px 20px 6px 6px; 
+			background: #1f519d;
+		}
+		.pop-content2{
+			padding: 0;
+			height: 0;
+			height: 100%;
+			padding: 20px;
+			border-radius: 20px 20px 6px 6px; 
+			background: linear-gradient(40deg, rgba(139,192,100,1) 0%, rgba(109,180,50,1) 50%, rgba(139,192,100,1) 100%);
+		}
+		.pop-content3{
+			padding: 0;
+			height: 0;
+			height: 100%;
+			padding: 20px;
+			border-radius: 20px 20px 6px 6px; 
+			background: #f55b4e;
+		}
+
+		.lead{
+			margin-bottom: 9px;
+			color: white;
+			font-size: 1rem;
+			font-weight: 400;
+			line-height: 1.5;
+			font-family: 'Helvetica';
+		}
+
+		.btn{
+			background: #3572ce; 
+			color: white;
+			border-radius: 40px;
+			border: 2px solid #11426f;
+			transition: 0.7s;
+			text-align: center;
+			width: 90px;
+			height: 35px;
+			font-size: 14px;
+			display: block;
+			margin: auto;
+			cursor: pointer;
+		}
+		.btn2{
+			background: #44aa16; 
+			color: white;
+			border-radius: 40px;
+			border: 2px solid #0d6628;
+			transition: 0.7s;
+			text-align: center;
+			width: 90px;
+			height: 35px;
+			font-size: 14px;
+			display: block;
+			margin: auto;
+			cursor: pointer;
+		}
+		.btn3{
+			background: #e8292f; 
+			color: white;
+			border-radius: 40px;
+			border: 2px solid #d14533;
+			transition: 0.7s;
+			text-align: center;
+			width: 90px;
+			height: 35px;
+			font-size: 14px;
+			display: block;
+			margin: auto;
+			cursor: pointer;
+		}
+
+		.btn:hover{
+			background-color: white;
+			color: #11426f;
+			transition: 0.7s;
+		}
+		.btn2:hover{
+			background-color: white;
+			color: #0d6628;
+			transition: 0.7s;
+		}
+		.btn3:hover{
+			background-color: white;
+			color: #d14533;
+			transition: 0.7s;
+		}
+
+		.cards:hover .pop-up{
+			transform: translateY(36%);
+			transition: 0.7s;
+		}
+
+		.pic{
+			width: 80px;
+			margin-top: -55px;
+			border-radius: 50%;
+		}
+	</style>
+</head>
+<body>
+
+	<section>
+		<div class="inner-section">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+						<h1 class="heading" align="center"><span>o</span><span>u</span><span>r</span> Services</h1>
+
+						<div class="card-display">
+							<div class="cards">
+								<div class="overlay">
+									<h1 class="card-heading">Programming and Development</h1>
+
+									<div class="social" align="center">
+										<a href="#"><i class="fab fa-facebook"></i></a>
+										<a href="#"><i class="fab fa-youtube"></i></a>
+										<a href="#"><i class="fab fa-instagram"></i></a>
+									</div>
+
+									<div class="pop-up">
+										<div class="pop-content">
+											<div class="icon"></div>
+											<div align="center">
+												<img src="pic1.jpg" alt="pic" class="pic">
+											</div>
+
+											<p class="lead">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+												tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+											</p>
+											<button class="btn">Read more</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="cards">
+								<div class="overlay">
+									<h1 class="card-heading">Graphics Design</h1>
+
+									<div class="social2" align="center">
+										<a href="#"><i class="fab fa-facebook"></i></a>
+										<a href="#"><i class="fab fa-youtube"></i></a>
+										<a href="#"><i class="fab fa-instagram"></i></a>
+									</div>
+
+									<div class="pop-up">
+										<div class="pop-content2">
+											<div class="icon"></div>
+											<div align="center">
+												<img src="pic2.jpg" alt="pic" class="pic">
+											</div>
+
+											<p class="lead">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+												tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+											</p>
+											<button class="btn2">Read more</button>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="cards">
+								<div class="overlay">
+									<div class="social3" align="center">
+										<a href="#"><i class="fab fa-facebook"></i></a>
+										<a href="#"><i class="fab fa-youtube"></i></a>
+										<a href="#"><i class="fab fa-instagram"></i></a>
+									</div>
+
+									<div class="pop-up">
+										<div class="pop-content3">
+											<div class="icon"></div>
+											<div align="center">
+												<img src="pic3.jpg" alt="pic" class="pic">
+											</div>
+
+											<p class="lead">
+												Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+												tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.
+											</p>
+											<button class="btn3">Read more</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+</body>
+</html>
